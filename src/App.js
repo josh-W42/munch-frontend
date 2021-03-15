@@ -51,7 +51,7 @@ const { REACT_APP_SERVER_URL } = process.env;
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   let token = localStorage.getItem("jwtToken");
-  console.log("===> Hitting a Private Route");
+  // console.log("===> Hitting a Private Route");
   return (
     <Route
       {...rest}
@@ -67,8 +67,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 function App() {
-  const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
-  console.log(REACT_APP_SERVER_URL)
   // Set state values
   const [currentUser, setCurrentUser] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -99,7 +97,7 @@ function App() {
 
     if (!localStorage.getItem("jwtToken")) {
       setIsAuthenticated(false);
-      console.log("====> Authenticated is now FALSE");
+      // console.log("====> Authenticated is now FALSE");
     } else {
       token = jwt_decode(localStorage.getItem("jwtToken"));
 
@@ -152,7 +150,7 @@ function App() {
   }
 
   const nowCurrentUser = (userData) => {
-    console.log("===> nowCurrent is here.");
+    // console.log("===> nowCurrent is here.");
     getUserData(userData);
   };
 
@@ -249,7 +247,6 @@ function App() {
             exact
             path="/restaurants/:id"
             render={(props) => {
-              console.log("PROPS");
               return (
                 <RestaurantPublic
                   {...props}

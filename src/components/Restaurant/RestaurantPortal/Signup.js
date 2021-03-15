@@ -193,7 +193,6 @@ export default function CustomizedSteppers(props) {
     // console.log(props);
 
     if (password === confirmPassword && password.length >= 8) {
-      console.log(category)
       const newRestaurant = {
         name,
         email,
@@ -204,9 +203,8 @@ export default function CustomizedSteppers(props) {
       };
       axios
         .post(`${REACT_APP_SERVER_URL}/restaurants/register`, newRestaurant)
-        .then((response) => {
-          console.log("===> Yay, new restaurant");
-          console.log(response);
+        .then((response) => {        
+          
           const { token } = response.data;
 
           if (!token) throw new Error('Token Not Returned');
